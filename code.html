@@ -1,0 +1,715 @@
+<!DOCTYPE html><html class="dark" lang="id" style=""><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><meta content="web_standard" name="shell-type"><title>Jago Organizer — Premium Event Organizer Architecture</title><link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&amp;family=Syne:wght@600;700;800&amp;display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"on-primary-container":"#340080","surface-variant":"#353439","primary-container":"#a078ff","background":"#131317","tertiary-container":"#9587cc","secondary-fixed":"#e8ddff","secondary-fixed-dim":"#cebdff","surface":"#131317","on-secondary":"#381385","on-secondary-fixed-variant":"#4f319c","error-container":"#93000a","on-primary-fixed-variant":"#5516be","on-secondary-fixed":"#21005e","primary-fixed":"#e9ddff","on-tertiary":"#332664","on-surface-variant":"#cbc3d7","on-primary":"#3c0091","primary":"#d0bcff","inverse-on-surface":"#303034","outline-variant":"#494454","surface-container-high":"#2a292e","secondary-container":"#4f319c","tertiary":"#ccbeff","primary-fixed-dim":"#d0bcff","on-secondary-container":"#bea8ff","inverse-surface":"#e4e1e7","error":"#ffb4ab","tertiary-fixed":"#e7deff","surface-container":"#1f1f24","outline":"#958ea0","surface-dim":"#131317","secondary":"#cebdff","surface-tint":"#d0bcff","surface-container-lowest":"#0e0e12","on-tertiary-container":"#2c1f5c","on-error":"#690005","on-primary-fixed":"#23005c","on-tertiary-fixed-variant":"#4a3d7c","on-background":"#e4e1e7","inverse-primary":"#6d3bd7","tertiary-fixed-dim":"#ccbeff","on-tertiary-fixed":"#1e0e4e","surface-bright":"#39393d","surface-container-highest":"#353439","surface-container-low":"#1b1b1f","on-surface":"#e4e1e7","on-error-container":"#ffdad6"},borderRadius:{DEFAULT:"0.125rem",lg:"0.25rem",xl:"0.5rem",full:"0.75rem"},spacing:{gutter:"1.5rem","space-xs":"0.25rem","gutter-mobile":"1rem","margin-mobile":"1.25rem","space-md":"1rem","space-lg":"1.5rem",margin:"3rem","space-xl":"2.5rem","space-sm":"0.5rem"},fontFamily:{"headline-sm":["Syne"],"display-xl":["Syne"],"label-sm":["Geist"],"display-xl-mobile":["Syne"],"body-md":["Geist"],"label-md":["Geist"],"headline-lg-mobile":["Syne"],"headline-lg":["Syne"],"body-lg":["Geist"],"body-sm":["Geist"],"headline-md":["Syne"]},fontSize:{"headline-sm":["1.375rem",{lineHeight:"1.75rem",letterSpacing:"-0.01em",fontWeight:"600"}],"display-xl":["5rem",{lineHeight:"5.25rem",letterSpacing:"-0.04em",fontWeight:"800"}],"label-sm":["0.6875rem",{lineHeight:"1rem",letterSpacing:"0.08em",fontWeight:"600"}],"display-xl-mobile":["3rem",{lineHeight:"3.25rem",letterSpacing:"-0.03em",fontWeight:"800"}],"body-md":["0.9375rem",{lineHeight:"1.5rem",letterSpacing:"0em",fontWeight:"400"}],"label-md":["0.875rem",{lineHeight:"1.25rem",letterSpacing:"0.02em",fontWeight:"500"}],"headline-lg-mobile":["2rem",{lineHeight:"2.375rem",letterSpacing:"-0.02em",fontWeight:"700"}],"headline-lg":["3rem",{lineHeight:"3.5rem",letterSpacing:"-0.03em",fontWeight:"700"}],"body-lg":["1.125rem",{lineHeight:"1.75rem",letterSpacing:"-0.01em",fontWeight:"400"}],"body-sm":["0.8125rem",{lineHeight:"1.25rem",letterSpacing:"0.01em",fontWeight:"400"}],"headline-md":["2rem",{lineHeight:"2.5rem",letterSpacing:"-0.02em",fontWeight:"600"}]}}}};</script></head><body class="bg-background font-body-md text-on-surface antialiased selection:bg-primary selection:text-on-primary min-h-screen flex flex-col relative overflow-x-hidden"><div class="pointer-events-none fixed inset-0 z-0 overflow-hidden"><div class="absolute -top-40 left-1/2 -translate-x-1/2 w-[700px] h-[500px] bg-secondary-container/20 blur-[140px] rounded-full"></div><div class="absolute top-1/3 -right-40 w-[500px] h-[500px] bg-primary-container/10 blur-[160px] rounded-full"></div></div><header class="fixed top-0 inset-x-0 z-50 transition-all duration-300"><div class="w-full px-margin-mobile md:px-margin"><div class="h-20 max-w-7xl mx-auto flex items-center justify-between mt-4 px-6 rounded-full border border-white/10 bg-[#0a0a0a]/75 backdrop-blur-xl shadow-[0_12px_32px_-8px_rgba(0,0,0,0.8)]"><div class="flex items-center gap-4"><img alt="Jago Organizer Logo" class="w-auto object-contain filter invert brightness-95 h-12" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBDTMfLR3drvtD27ZE8PbF4lktGmGO2x9SuDYH68NhQLaR04NvGB7sFsZgs6FMSQCu9KmG9GGUusdpsHwscDEkccbnS9UrmRQA5PGz_qBqTMVoLm-L-P6ynJGaVgK2LPYhiOrMHqHtNJYfkn6_FIm8ucT4IdrlG17_lLKKTNdDxtGUqUnLBxxrVtOZh-xfldJlwxm194KZo2ipuhGsMY2XAWnIqjhrGIdo2faVYujxxJ-K39g9ZSBXFncuMrIIcs-MqRw" style="filter: brightness(0) invert(1);"><span class="font-headline-sm text-headline-sm text-on-surface tracking-tight uppercase">Jago Organizer</span></div><nav class="hidden md:flex items-center gap-8" data-active-classes="text-primary font-bold drop-shadow-[0_0_12px_rgba(208,188,255,0.6)]"><a aria-current="page" class="transition-all duration-200 tracking-wide text-primary font-bold drop-shadow-[0_0_12px_rgba(208,188,255,0.6)]" data-path="home" href="#hero">Home</a><a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-all duration-200 tracking-wide hover:drop-shadow-[0_0_8px_rgba(208,188,255,0.4)]" data-path="services" href="#layanan">Services</a><a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-all duration-200 tracking-wide hover:drop-shadow-[0_0_8px_rgba(208,188,255,0.4)]" data-path="clients" href="#klien">Clients</a><a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-all duration-200 tracking-wide hover:drop-shadow-[0_0_8px_rgba(208,188,255,0.4)]" data-path="portfolio" href="#portofolio">Portfolio</a><a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-all duration-200 tracking-wide hover:drop-shadow-[0_0_8px_rgba(208,188,255,0.4)]" data-path="contact" href="#kontak">Contact</a></nav><div class="flex items-center gap-4"><a class="hidden sm:inline-flex items-center justify-center px-6 py-2.5 rounded-full font-label-md text-label-md text-on-primary bg-primary hover:bg-primary-container transition-all duration-300 shadow-[0_0_20px_rgba(160,120,255,0.35)] hover:shadow-[0_0_28px_rgba(160,120,255,0.6)] border border-white/20" href="#kontak">Hubungi Kami</a><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></div></header><main class="w-full pt-20 relative z-10 flex-grow"><div class="flex flex-col w-full">
+<!-- HERO SECTION -->
+<section class="relative w-full -mt-20 pt-32 pb-24 px-margin-mobile md:px-margin overflow-hidden" id="hero">
+<!-- Ambient Atmospheric Glows -->
+<div class="pointer-events-none absolute top-10 left-1/2 -translate-x-1/2 w-[800px] h-[450px] bg-secondary-container/25 blur-[160px] rounded-full"></div>
+<div class="pointer-events-none absolute top-1/2 -left-48 w-[400px] h-[400px] bg-primary/10 blur-[130px] rounded-full"></div>
+<div class="max-w-7xl mx-auto flex flex-col items-center text-center relative z-10">
+<!-- Tag / Badge -->
+<div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-surface-container-high/70 backdrop-blur-md shadow-sm mb-8 transition-transform hover:scale-105">
+<span class="inline-block w-2 h-2 rounded-full bg-primary animate-ping"></span>
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-primary font-semibold">
+          ✦ #1 Premier Event Management &amp; Production in Central Java
+        </span>
+</div>
+<!-- Main Headline -->
+<h1 class="font-display-xl text-display-xl text-on-surface max-w-5xl tracking-tight leading-tight">
+        Wujudkan Acara Impian Anda Bersama <span class="bg-gradient-to-r from-primary via-secondary to-primary-container bg-clip-text text-transparent">Jago Organizer.</span>
+</h1>
+<!-- Subheadline -->
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-3xl mt-6 leading-relaxed">
+        Mitra terbaik Anda untuk manajemen acara yang profesional, kreatif, dan tak terlupakan. Kami menangani segalanya dari konsepsi arsitektur panggung hingga eksekusi tanpa cela.
+      </p>
+<!-- Action Buttons -->
+<div class="flex flex-col sm:flex-row items-center gap-4 mt-10">
+<a class="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full bg-primary text-on-primary font-label-md text-label-md font-semibold transition-all duration-300 shadow-xl shadow-primary/25 hover:shadow-primary/45 hover:scale-[1.02] group" href="https://wa.me/628988385316" rel="noopener noreferrer" target="_blank">
+<span class="material-symbols-outlined text-[20px] transition-transform group-hover:rotate-12" style="font-variation-settings: &quot;FILL&quot; 1;">chat</span>
+<span class="">Konsultasi Sekarang</span>
+<span class="material-symbols-outlined text-[18px] transition-transform group-hover:translate-x-1">arrow_forward</span>
+</a>
+<a class="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-full bg-surface-container-high/60 backdrop-blur-xl text-on-surface hover:text-primary font-label-md text-label-md font-medium transition-all duration-300 shadow-md hover:bg-surface-container-highest" href="#portofolio">
+<span class="material-symbols-outlined text-[20px]">photo_library</span>
+<span class="">Lihat Portofolio</span>
+</a>
+</div>
+<!-- Hero Visual Stage Banner Showcase -->
+<div class="w-full mt-16 relative rounded-3xl overflow-hidden bg-surface-container-lowest shadow-2xl group">
+<div class="relative w-full aspect-[16/9] md:aspect-[21/9] overflow-hidden">
+<img alt="Panggung Konser Spektakuler Jago Organizer" class="w-full h-full object-cover object-center transition-transform duration-1000 group-hover:scale-105 filter brightness-95 contrast-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB7GgbD270z_Zu9bJVFdA_koVOtm52SvdEF7T0FOWlEhP6BfYB5unBOh7TRyI2xXYkLrm1vmXZPI2ugCBQ72pv4MnRFin6MrFuTyiA03RETn9nxtHApo47o2mw7c-R7wv2C6i2DmqEZpp06RGhegSgsfH0S9xPYJwNEgARBbg01BEjIAp24cUYppb19un9XgSOJ4-BJas_LzkR60PEhtfb95rWlmwnORFyk5A3-T4ZtAboulzZ8N4HhvZcjY0St3g1MYA">
+<!-- Multi-gradient scrim -->
+<div class="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent"></div>
+<div class="absolute inset-0 bg-gradient-to-r from-background/70 via-transparent to-background/70"></div>
+<!-- Glass Coordinates Marker -->
+<div class="absolute top-6 left-6 hidden md:flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-surface-container-lowest/70 backdrop-blur-md">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+<span class="font-label-sm text-label-sm text-outline tracking-widest uppercase">// LIVE PRODUCTION ARCHITECTURE • CENTRAL JAVA</span>
+</div>
+<div class="absolute top-6 right-6 hidden md:flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-surface-container-lowest/70 backdrop-blur-md text-on-surface-variant font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[16px] text-primary">verified</span>
+<span class="">Accredited EO Production</span>
+</div>
+</div>
+<!-- Floating Metrics Bar inside Hero Banner -->
+<div class="relative z-20 -mt-16 md:-mt-12 px-6 pb-6 w-full">
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-4xl mx-auto">
+<div class="p-5 rounded-2xl bg-surface-container-high/80 backdrop-blur-xl shadow-xl flex items-center gap-4 transition-all hover:translate-y-[-2px] hover:bg-surface-container-highest">
+<div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary flex-shrink-0">
+<span class="material-symbols-outlined text-[28px]" style="font-variation-settings: &quot;FILL&quot; 1;">celebration</span>
+</div>
+<div class="text-left">
+<div class="font-headline-sm text-headline-sm text-on-surface font-bold tracking-tight">500+</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant tracking-wider uppercase">Acara Sukses Terlaksana</div>
+</div>
+</div>
+<div class="p-5 rounded-2xl bg-surface-container-high/80 backdrop-blur-xl shadow-xl flex items-center gap-4 transition-all hover:translate-y-[-2px] hover:bg-surface-container-highest">
+<div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary flex-shrink-0">
+<span class="material-symbols-outlined text-[28px]" style="font-variation-settings: &quot;FILL&quot; 1;">sentiment_very_satisfied</span>
+</div>
+<div class="text-left">
+<div class="font-headline-sm text-headline-sm text-on-surface font-bold tracking-tight">99.8%</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant tracking-wider uppercase">Client Satisfaction</div>
+</div>
+</div>
+<div class="p-5 rounded-2xl bg-surface-container-high/80 backdrop-blur-xl shadow-xl flex items-center gap-4 transition-all hover:translate-y-[-2px] hover:bg-surface-container-highest">
+<div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary flex-shrink-0">
+<span class="material-symbols-outlined text-[28px]" style="font-variation-settings: &quot;FILL&quot; 1;">workspace_premium</span>
+</div>
+<div class="text-left">
+<div class="font-headline-sm text-headline-sm text-on-surface font-bold tracking-tight">3+ Tahun</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant tracking-wider uppercase">Pengalaman Teruji</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SERVICES SECTION (BENTO GRID) -->
+<section class="w-full py-24 px-margin-mobile md:px-margin relative" id="layanan">
+<div class="max-w-7xl mx-auto flex flex-col gap-14">
+<!-- Section Header -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+<div class="flex flex-col gap-3">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<span class="font-label-sm text-label-sm text-primary tracking-widest uppercase">// LAYANAN KAMI</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface tracking-tight">
+            Solusi Komprehensif Kebutuhan Event Anda
+          </h2>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-md">
+          Dari perencanaan strategis, tata panggung kelas konser, hingga eksekusi ground crew profesional dalam satu ekosistem terpadu.
+        </p>
+</div>
+<!-- Bento-Box Grid -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+<!-- Card 1: Man Power (Featured Bento - 8 cols) -->
+<div class="md:col-span-8 rounded-3xl bg-surface-container-low/70 backdrop-blur-xl p-8 relative overflow-hidden flex flex-col justify-between group shadow-xl hover:bg-surface-container transition-all duration-300">
+<div class="absolute -right-16 -top-16 w-64 h-64 bg-primary/10 rounded-full blur-3xl group-hover:bg-primary/20 transition-all"></div>
+<div>
+<div class="flex items-center justify-between mb-6">
+<div class="w-14 h-14 rounded-2xl bg-secondary-container/40 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[32px]">groups</span>
+</div>
+<span class="px-3.5 py-1 rounded-full bg-surface-container-highest text-primary font-label-sm text-label-sm tracking-wider uppercase">Unggulan Utama</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface font-bold tracking-tight">Man Power Profesional</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mt-3 max-w-xl leading-relaxed">
+              Penyediaan tenaga kerja terlatih dan berdedikasi tinggi untuk memastikan setiap pilar event Anda beroperasi presisi tanpa jeda kendala.
+            </p>
+<div class="grid grid-cols-2 sm:grid-cols-3 gap-3 mt-8">
+<div class="p-3.5 rounded-xl bg-surface-container-high/60 flex items-center gap-2.5">
+<span class="material-symbols-outlined text-primary text-[18px]">verified_user</span>
+<span class="font-body-sm text-body-sm text-on-surface">Liaison Officer (LO)</span>
+</div>
+<div class="p-3.5 rounded-xl bg-surface-container-high/60 flex items-center gap-2.5">
+<span class="material-symbols-outlined text-primary text-[18px]">engineering</span>
+<span class="font-body-sm text-body-sm text-on-surface">Crew Produksi Stage</span>
+</div>
+<div class="p-3.5 rounded-xl bg-surface-container-high/60 flex items-center gap-2.5">
+<span class="material-symbols-outlined text-primary text-[18px]">manage_accounts</span>
+<span class="font-body-sm text-body-sm text-on-surface">Event Coordinator</span>
+</div>
+<div class="p-3.5 rounded-xl bg-surface-container-high/60 flex items-center gap-2.5">
+<span class="material-symbols-outlined text-primary text-[18px]">shield</span>
+<span class="font-body-sm text-body-sm text-on-surface">Crowd Security Protocol</span>
+</div>
+<div class="p-3.5 rounded-xl bg-surface-container-high/60 flex items-center gap-2.5">
+<span class="material-symbols-outlined text-primary text-[18px]">face</span>
+<span class="font-body-sm text-body-sm text-on-surface">Usher &amp; Frontliners</span>
+</div>
+<div class="p-3.5 rounded-xl bg-surface-container-high/60 flex items-center gap-2.5">
+<span class="material-symbols-outlined text-primary text-[18px]">mic</span>
+<span class="font-body-sm text-body-sm text-on-surface">Stage Managers</span>
+</div>
+</div>
+</div>
+<div class="mt-8 pt-6 flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-outline tracking-wider uppercase">01 // TALENT ARCHITECTURE</span>
+<a class="text-primary hover:text-on-surface font-label-md text-label-md inline-flex items-center gap-1 group-hover:translate-x-1 transition-all" href="https://wa.me/628988385316?text=Halo%20Jago%20Organizer,%20saya%20tertarik%20dengan%20layanan%20Man%20Power%20Event" target="_blank">
+              Tanya Ketersediaan Kru <span class="material-symbols-outlined text-[16px]">arrow_outward</span>
+</a>
+</div>
+</div>
+<!-- Card 2: Desain Layouting (4 cols) -->
+<div class="md:col-span-4 rounded-3xl bg-surface-container-low/70 backdrop-blur-xl p-8 flex flex-col justify-between group shadow-xl hover:bg-surface-container transition-all duration-300">
+<div>
+<div class="w-14 h-14 rounded-2xl bg-surface-container-high flex items-center justify-center text-primary mb-6">
+<span class="material-symbols-outlined text-[32px]">space_dashboard</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-bold tracking-tight">Desain Layouting &amp; 3D</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-3 leading-relaxed">
+              Perancangan tata letak acara efisien dan estetik dengan visualisasi 3D panggung, simulasi sirkulasi penonton, dan zoning keamanan komprehensif.
+            </p>
+</div>
+<div class="mt-8 pt-6 flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider">02 // SPATIAL FLOW</span>
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors">architecture</span>
+</div>
+</div>
+<!-- Card 3: Flayer & Desain Grafis (4 cols) -->
+<div class="md:col-span-4 rounded-3xl bg-surface-container-low/70 backdrop-blur-xl p-8 flex flex-col justify-between group shadow-xl hover:bg-surface-container transition-all duration-300">
+<div>
+<div class="w-14 h-14 rounded-2xl bg-surface-container-high flex items-center justify-center text-primary mb-6">
+<span class="material-symbols-outlined text-[32px]">palette</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-bold tracking-tight">Flayer &amp; Desain Grafis</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-3 leading-relaxed">
+              Identitas visual bernilai tinggi untuk promosi acara. Mulai dari key visual kampanye, lanyard, billboard megaskala, hingga motion graphic layar videotron.
+            </p>
+</div>
+<div class="mt-8 pt-6 flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider">03 // BRAND AESTHETICS</span>
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors">auto_awesome</span>
+</div>
+</div>
+<!-- Card 4: Photobooth Interactive (4 cols) -->
+<div class="md:col-span-4 rounded-3xl bg-surface-container-low/70 backdrop-blur-xl p-8 flex flex-col justify-between group shadow-xl hover:bg-surface-container transition-all duration-300">
+<div>
+<div class="w-14 h-14 rounded-2xl bg-surface-container-high flex items-center justify-center text-primary mb-6">
+<span class="material-symbols-outlined text-[32px]">photo_camera</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-bold tracking-tight">Photobooth Interaktif</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-3 leading-relaxed">
+              Titik interaksi visual untuk tamu dengan 360-degree video booth, instant print photo strip, custom thematic lighting, serta backdrop futuristik.
+            </p>
+</div>
+<div class="mt-8 pt-6 flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider">04 // GUEST ENGAGEMENT</span>
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors">camera</span>
+</div>
+</div>
+<!-- Card 5: Fotografer & Videografer (4 cols) -->
+<div class="md:col-span-4 rounded-3xl bg-surface-container-low/70 backdrop-blur-xl p-8 flex flex-col justify-between group shadow-xl hover:bg-surface-container transition-all duration-300">
+<div>
+<div class="w-14 h-14 rounded-2xl bg-surface-container-high flex items-center justify-center text-primary mb-6">
+<span class="material-symbols-outlined text-[32px]">videocam</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-bold tracking-tight">Fotografi &amp; Videografi</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-3 leading-relaxed">
+              Dokumentasi premium sinematik 4K, aftermovie berkelas festival, multi-camera broadcasting live stream, serta kurasi foto real-time untuk liputan pers.
+            </p>
+</div>
+<div class="mt-8 pt-6 flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider">05 // CINEMATICS</span>
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors">movie</span>
+</div>
+</div>
+<!-- Card 6: Konsultan Event (5 cols) -->
+<div class="md:col-span-5 rounded-3xl bg-surface-container-low/70 backdrop-blur-xl p-8 flex flex-col justify-between group shadow-xl hover:bg-surface-container transition-all duration-300">
+<div>
+<div class="w-14 h-14 rounded-2xl bg-surface-container-high flex items-center justify-center text-primary mb-6">
+<span class="material-symbols-outlined text-[32px]">psychology</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-bold tracking-tight">Konsultan Event Strategis</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-3 leading-relaxed">
+              Konsultasi mendalam perumusan tema, penyusunan rundown menit-ke-menit, asistensi perizinan birokrasi kepolisian &amp; satgas, hingga audit mitigasi risiko.
+            </p>
+</div>
+<div class="mt-8 pt-6 flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider">06 // STRATEGIC ADVISORY</span>
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors">lightbulb</span>
+</div>
+</div>
+<!-- Card 7: All Event Needs (Wide Bento - 7 cols) -->
+<div class="md:col-span-7 rounded-3xl bg-gradient-to-br from-surface-container-low via-surface-container to-secondary-container/20 backdrop-blur-xl p-8 flex flex-col justify-between relative overflow-hidden group shadow-xl hover:bg-surface-container transition-all duration-300">
+<div class="absolute -right-12 -bottom-12 w-48 h-48 bg-primary-container/20 rounded-full blur-2xl"></div>
+<div>
+<div class="flex items-center justify-between mb-6">
+<div class="w-14 h-14 rounded-2xl bg-primary/20 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[32px]">speaker_group</span>
+</div>
+<span class="px-3.5 py-1 rounded-full bg-surface-container-highest text-secondary-fixed font-label-sm text-label-sm tracking-wider uppercase">End-to-End Production</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface font-bold tracking-tight">All Event Needs &amp; Hardware</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mt-3 leading-relaxed">
+              Penyediaan infrastruktur teknis standar konser internasional: Line Array Sound System puluhan ribu watt, LED Screen Videotron P3/P2 indoor &amp; outdoor, Moving Head Beams, genset silent berskala besar, hingga kurasi penampil/artis nasional.
+            </p>
+</div>
+<div class="mt-8 pt-6 flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider">07 // FULL STACK HARDWARE</span>
+<a class="text-primary hover:text-on-surface font-label-md text-label-md inline-flex items-center gap-1 group-hover:translate-x-1 transition-all" href="https://wa.me/628988385316?text=Halo%20Jago%20Organizer,%20saya%20ingin%20info%20kebutuhan%20Hardware%20dan%20Produksi%20Event" target="_blank">
+              Katalog Perlengkapan <span class="material-symbols-outlined text-[16px]">arrow_outward</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- TRUSTED CLIENTS SECTION (MARQUEE) -->
+<section class="w-full py-20 bg-surface-container-lowest/60 backdrop-blur-xl relative overflow-hidden" id="klien">
+<div class="max-w-7xl mx-auto px-margin-mobile md:px-margin mb-12 text-center">
+<div class="inline-flex items-center gap-2 mb-3">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<span class="font-label-sm text-label-sm text-primary tracking-widest uppercase">// KLIEN KAMI</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface tracking-tight">
+        Dipercaya Oleh Institusi Negara &amp; Korporasi Terkemuka
+      </h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-2xl mx-auto mt-4">
+        Kolaborasi jangka panjang bersama kementerian, pemerintah daerah di Jawa Tengah, universitas bergengsi, dan industri manufaktur skala nasional.
+      </p>
+</div>
+<!-- Infinite Scrolling Marquee Track 1 -->
+<div class="relative w-full overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_15%,black_85%,transparent)]">
+<div class="flex items-center gap-6 whitespace-nowrap animate-[marquee_28s_linear_infinite] hover:[animation-play-state:paused] py-2">
+<!-- Client Badges Group 1 -->
+<div class="inline-flex items-center gap-3 px-6 py-3.5 rounded-2xl bg-surface-container-high/60 backdrop-blur-md shadow-sm">
+<span class="material-symbols-outlined text-primary text-[20px]">account_balance</span>
+<span class="font-label-md text-label-md text-on-surface font-semibold tracking-wide">Kominfo RI</span>
+</div>
+<div class="inline-flex items-center gap-3 px-6 py-3.5 rounded-2xl bg-surface-container-high/60 backdrop-blur-md shadow-sm">
+<span class="material-symbols-outlined text-primary text-[20px]">menu_book</span>
+<span class="font-label-md text-label-md text-on-surface font-semibold tracking-wide">Kemenag RI</span>
+</div>
+<div class="inline-flex items-center gap-3 px-6 py-3.5 rounded-2xl bg-surface-container-high/60 backdrop-blur-md shadow-sm">
+<span class="material-symbols-outlined text-primary text-[20px]">location_city</span>
+<span class="font-label-md text-label-md text-on-surface font-semibold tracking-wide">Pemkot Kota Semarang</span>
+</div>
+<div class="inline-flex items-center gap-3 px-6 py-3.5 rounded-2xl bg-surface-container-high/60 backdrop-blur-md shadow-sm">
+<span class="material-symbols-outlined text-primary text-[20px]">domain</span>
+<span class="font-label-md text-label-md text-on-surface font-semibold tracking-wide">Pemprov Jawa Tengah</span>
+</div>
+<div class="inline-flex items-center gap-3 px-6 py-3.5 rounded-2xl bg-surface-container-high/60 backdrop-blur-md shadow-sm">
+<span class="material-symbols-outlined text-primary text-[20px]">school</span>
+<span class="font-label-md text-label-md text-on-surface font-semibold tracking-wide">Universitas Airlangga (UNAIR)</span>
+</div>
+<div class="inline-flex items-center gap-3 px-6 py-3.5 rounded-2xl bg-surface-container-high/60 backdrop-blur-md shadow-sm">
+<span class="material-symbols-outlined text-primary text-[20px]">school</span>
+<span class="font-label-md text-label-md text-on-surface font-semibold tracking-wide">Universitas Negeri Semarang (UNNES)</span>
+</div>
+<div class="inline-flex items-center gap-3 px-6 py-3.5 rounded-2xl bg-surface-container-high/60 backdrop-blur-md shadow-sm">
+<span class="material-symbols-outlined text-primary text-[20px]">factory</span>
+<span class="font-label-md text-label-md text-on-surface font-semibold tracking-wide">Rokok Sukun</span>
+</div>
+<div class="inline-flex items-center gap-3 px-6 py-3.5 rounded-2xl bg-surface-container-high/60 backdrop-blur-md shadow-sm">
+<span class="material-symbols-outlined text-primary text-[20px]">business</span>
+<span class="font-label-md text-label-md text-on-surface font-semibold tracking-wide">PT Fukuryo</span>
+</div>
+<div class="inline-flex items-center gap-3 px-6 py-3.5 rounded-2xl bg-surface-container-high/60 backdrop-blur-md shadow-sm">
+<span class="material-symbols-outlined text-primary text-[20px]">apartment</span>
+<span class="font-label-md text-label-md text-on-surface font-semibold tracking-wide">PT Mas Arya</span>
+</div>
+<div class="inline-flex items-center gap-3 px-6 py-3.5 rounded-2xl bg-surface-container-high/60 backdrop-blur-md shadow-sm">
+<span class="material-symbols-outlined text-primary text-[20px]">corporate_fare</span>
+<span class="font-label-md text-label-md text-on-surface font-semibold tracking-wide">PT Twim</span>
+</div>
+<div class="inline-flex items-center gap-3 px-6 py-3.5 rounded-2xl bg-surface-container-high/60 backdrop-blur-md shadow-sm">
+<span class="material-symbols-outlined text-primary text-[20px]">map</span>
+<span class="font-label-md text-label-md text-on-surface font-semibold tracking-wide">Pemkab Area Jawa Tengah</span>
+</div>
+<!-- Repeated for seamless loop -->
+<div class="inline-flex items-center gap-3 px-6 py-3.5 rounded-2xl bg-surface-container-high/60 backdrop-blur-md shadow-sm">
+<span class="material-symbols-outlined text-primary text-[20px]">account_balance</span>
+<span class="font-label-md text-label-md text-on-surface font-semibold tracking-wide">Kominfo RI</span>
+</div>
+<div class="inline-flex items-center gap-3 px-6 py-3.5 rounded-2xl bg-surface-container-high/60 backdrop-blur-md shadow-sm">
+<span class="material-symbols-outlined text-primary text-[20px]">menu_book</span>
+<span class="font-label-md text-label-md text-on-surface font-semibold tracking-wide">Kemenag RI</span>
+</div>
+<div class="inline-flex items-center gap-3 px-6 py-3.5 rounded-2xl bg-surface-container-high/60 backdrop-blur-md shadow-sm">
+<span class="material-symbols-outlined text-primary text-[20px]">location_city</span>
+<span class="font-label-md text-label-md text-on-surface font-semibold tracking-wide">Pemkot Kota Semarang</span>
+</div>
+<div class="inline-flex items-center gap-3 px-6 py-3.5 rounded-2xl bg-surface-container-high/60 backdrop-blur-md shadow-sm">
+<span class="material-symbols-outlined text-primary text-[20px]">domain</span>
+<span class="font-label-md text-label-md text-on-surface font-semibold tracking-wide">Pemprov Jawa Tengah</span>
+</div>
+<div class="inline-flex items-center gap-3 px-6 py-3.5 rounded-2xl bg-surface-container-high/60 backdrop-blur-md shadow-sm">
+<span class="material-symbols-outlined text-primary text-[20px]">school</span>
+<span class="font-label-md text-label-md text-on-surface font-semibold tracking-wide">Universitas Airlangga (UNAIR)</span>
+</div>
+<div class="inline-flex items-center gap-3 px-6 py-3.5 rounded-2xl bg-surface-container-high/60 backdrop-blur-md shadow-sm">
+<span class="material-symbols-outlined text-primary text-[20px]">school</span>
+<span class="font-label-md text-label-md text-on-surface font-semibold tracking-wide">Universitas Negeri Semarang (UNNES)</span>
+</div>
+<div class="inline-flex items-center gap-3 px-6 py-3.5 rounded-2xl bg-surface-container-high/60 backdrop-blur-md shadow-sm">
+<span class="material-symbols-outlined text-primary text-[20px]">factory</span>
+<span class="font-label-md text-label-md text-on-surface font-semibold tracking-wide">Rokok Sukun</span>
+</div>
+</div>
+</div>
+</section>
+<!-- PORTFOLIO SECTION -->
+<section class="w-full py-24 px-margin-mobile md:px-margin relative" id="portofolio"><div class="max-w-7xl mx-auto flex flex-col gap-12"><div class="flex flex-col lg:flex-row lg:items-end justify-between gap-8"><div><div class="flex items-center gap-2 mb-2"><span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span><span class="font-label-sm text-label-sm text-primary tracking-widest uppercase">// PORTOFOLIO EKSKLUSIF</span></div><h2 class="font-headline-lg text-headline-lg text-on-surface tracking-tight">Karya Spektakuler Kami</h2><p class="font-body-md text-body-md text-on-surface-variant mt-2 max-w-xl">Kurasi arsip visual karya panggung spektakuler, perhelatan akbar kementerian, festival musik, dan seremoni korporasi berstandar internasional.</p></div><div class="flex flex-wrap items-center gap-2 p-1.5 rounded-full bg-surface-container-high/80 backdrop-blur-xl border border-white/10 shadow-lg" id="portfolio-filter-container"><button class="portfolio-tab px-5 py-2 rounded-full font-label-md text-label-md text-on-primary bg-primary shadow-[0_0_16px_rgba(208,188,255,0.4)] transition-all" data-filter="all">Semua</button><button class="portfolio-tab px-5 py-2 rounded-full font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-all" data-filter="konser">Konser &amp; Festival</button><button class="portfolio-tab px-5 py-2 rounded-full font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-all" data-filter="corporate">Corporate Gathering</button><button class="portfolio-tab px-5 py-2 rounded-full font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-all" data-filter="government">Government Summit</button><button class="portfolio-tab px-5 py-2 rounded-full font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-all" data-filter="exhibition">Exhibition</button></div></div><div class="columns-1 sm:columns-2 lg:columns-3 gap-6 space-y-6" id="portfolio-grid"><!-- Item 1: Sareng-Sareng Bersholawat Real Night Concert -->
+<div class="portfolio-item group relative break-inside-avoid rounded-3xl overflow-hidden bg-surface-container-low border border-white/10 hover:border-primary/50 transition-all duration-500 shadow-xl hover:-translate-y-1.5" data-category="konser">
+  <div class="relative w-full aspect-[3/4] overflow-hidden">
+    <img alt="Sareng-Sareng Bersholawat Konser Akbar" class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105 group-hover:rotate-[0.5deg]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDTSnFGWNo2Ryv9ZbxzV0JjPYNmfGmyUth9Mw9czWLAzwUnVOupBD8_32aVZ7Pn-oBWeRa1PKlPItWAbnuSObxkH7CMhS21_xmYsvuIxAU83FA6qkpgEH9jvQK9m7HThVBJOZF0W5Ar5v7rdE7dhR84oZx_1KLCcLCJFI5hCLfjpv-0e2lvh4xr-9tl-UHeJoIHw9msOKQpXaK7Q-Be2LK3v3z8v4jj3eAKusJgIF0RkXWTyrwcCD9N78nYZlkfNC4Y1A">
+    <div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest via-surface-container-lowest/20 to-transparent opacity-85 group-hover:opacity-95 transition-opacity"></div>
+    <span class="absolute top-4 left-4 px-3.5 py-1 rounded-full bg-surface-container-lowest/80 backdrop-blur-md border border-white/10 font-label-sm text-label-sm text-secondary tracking-wider uppercase">Konser &amp; Festival</span>
+  </div>
+  <div class="p-6 flex flex-col justify-between">
+    <div class="font-label-sm text-label-sm text-outline uppercase tracking-wider mb-1">2024 • Outdoor Stadium</div>
+    <h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold group-hover:text-primary transition-colors">Sareng-Sareng Bersholawat • Konser Akbar</h3>
+    <p class="font-body-sm text-body-sm text-on-surface-variant mt-2 leading-relaxed">Panggung megah konser sholawat bersama Azzahir didukung tata cahaya beam moving head spektakuler &amp; ribuan jamaah.</p>
+    <div class="mt-6 pt-4 border-t border-white/5 flex items-center justify-between">
+      <span class="font-label-sm text-label-sm text-outline">// LIVE STAGE ARCHIVE</span>
+      <a class="inline-flex items-center gap-1.5 font-label-sm text-label-sm text-primary group-hover:translate-x-1 transition-all" href="https://wa.me/628988385316?text=Halo%20Jago%20Organizer,%20saya%20ingin%20konsultasi%20produksi%20konser%20sholawat/festival" target="_blank">
+        <span class="">Detail Acara</span>
+        <span class="material-symbols-outlined text-[16px]">north_east</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- Item 2: Arya Phoria 2025 Master Siteplan -->
+<div class="portfolio-item group relative break-inside-avoid rounded-3xl overflow-hidden bg-surface-container-low border border-white/10 hover:border-primary/50 transition-all duration-500 shadow-xl hover:-translate-y-1.5" data-category="exhibition">
+  <div class="relative w-full aspect-[4/3] overflow-hidden">
+    <img alt="Arya Phoria 2025 Siteplan 3D Layouting" class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105 group-hover:rotate-[0.5deg]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDv4p8HVzvpRToIoH3qvUa08gepT5JL4-K7TimOh081Xq_2dJHQgyeQPlmwtcLo1nQ8Es_4VMSuONo50lffbkAzYGtlMSXZ8LAvMYe8aTFV-15ZW-xL-nWq5GCYmKFx1Yf0z0WDwOuQX9zcuvn_WDMto3KnafSt28U8TQX4iCRWRV0MBSo2eajsUZqLPUHh40MaP0FkLubu4EcvakZNuaD2haWA9c10S1QSWBYjiVEbcflb7cPAzBFsJbMc4icFn4Q_BA">
+    <div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest via-surface-container-lowest/30 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
+    <span class="absolute top-4 left-4 px-3.5 py-1 rounded-full bg-surface-container-lowest/80 backdrop-blur-md border border-white/10 font-label-sm text-label-sm text-tertiary tracking-wider uppercase">Exhibition</span>
+  </div>
+  <div class="p-6 flex flex-col justify-between">
+    <div class="font-label-sm text-label-sm text-outline uppercase tracking-wider mb-1">2025 • Spatial Layout</div>
+    <h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold group-hover:text-primary transition-colors">Arya Phoria 2025 • Master Siteplan 3D</h3>
+    <p class="font-body-sm text-body-sm text-on-surface-variant mt-2 leading-relaxed">Desain pemetaan tata ruang panggung, FOH, food court, photobooth, &amp; zonasi VIP.</p>
+    <div class="mt-6 pt-4 border-t border-white/5 flex items-center justify-between">
+      <span class="font-label-sm text-label-sm text-outline">// 3D SPATIAL MAP</span>
+      <a class="inline-flex items-center gap-1.5 font-label-sm text-label-sm text-primary group-hover:translate-x-1 transition-all" href="https://wa.me/628988385316?text=Halo%20Jago%20Organizer,%20saya%20tertarik%20dengan%20desain%20layouting%20dan%20masterplan%20event" target="_blank">
+        <span class="">Detail Acara</span>
+        <span class="material-symbols-outlined text-[16px]">north_east</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- Item 3: Azzahir Stage Rigging Setup -->
+<div class="portfolio-item group relative break-inside-avoid rounded-3xl overflow-hidden bg-surface-container-low border border-white/10 hover:border-primary/50 transition-all duration-500 shadow-xl hover:-translate-y-1.5" data-category="konser">
+  <div class="relative w-full aspect-[4/3] overflow-hidden">
+    <img alt="Azzahir Bersholawat Stage Production" class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105 group-hover:rotate-[0.5deg]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB7PPfQ2EAuEPJUuUZd8D3sFGIaxNMSUowXsva6KtrW28-wGk-7n0HKNuYEPpvC-gsItT44Io2rrEblUsNFOFideWPJu_zgH2o6XQ54yR1CJ7vtZsq4IYr98ekfAk0xxQOgnbs_QFfMFNoi6Z9Tw52HpDBG8NxN7iGbzgrxsXhOWVNZyNxrVyLazTfytO4j46cAaIVeV6gqIfbz8a4C4lrLjnYSjiaB0s-sizScS4HFs20l1q-jiG2BhJ0-WdFF84RJwg">
+    <div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest via-surface-container-lowest/30 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
+    <span class="absolute top-4 left-4 px-3.5 py-1 rounded-full bg-surface-container-lowest/80 backdrop-blur-md border border-white/10 font-label-sm text-label-sm text-secondary tracking-wider uppercase">Konser &amp; Festival</span>
+  </div>
+  <div class="p-6 flex flex-col justify-between">
+    <div class="font-label-sm text-label-sm text-outline uppercase tracking-wider mb-1">2024 • Stadion</div>
+    <h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold group-hover:text-primary transition-colors">Azzahir Bersholawat • Stage Production</h3>
+    <p class="font-body-sm text-body-sm text-on-surface-variant mt-2 leading-relaxed">Instalasi truss rigging panggung utama, line array sound system, dan barikade keamanan penonton.</p>
+    <div class="mt-6 pt-4 border-t border-white/5 flex items-center justify-between">
+      <span class="font-label-sm text-label-sm text-outline">// RIGGING &amp; HARDWARE</span>
+      <a class="inline-flex items-center gap-1.5 font-label-sm text-label-sm text-primary group-hover:translate-x-1 transition-all" href="https://wa.me/628988385316?text=Halo%20Jago%20Organizer,%20saya%20ingin%20sewa%20rigging%20dan%20sound%20system%20panggung" target="_blank">
+        <span class="">Detail Acara</span>
+        <span class="material-symbols-outlined text-[16px]">north_east</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- Item 4: Forum Dialog Publik Keberagamaan (Kominfo & Kemenag) -->
+<div class="portfolio-item group relative break-inside-avoid rounded-3xl overflow-hidden bg-surface-container-low border border-white/10 hover:border-primary/50 transition-all duration-500 shadow-xl hover:-translate-y-1.5" data-category="government">
+  <div class="relative w-full aspect-[4/3] overflow-hidden">
+    <img alt="Forum Dialog Publik Kominfo RI &amp; Ponpes Walisongo" class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105 group-hover:rotate-[0.5deg]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAD0rv-PAzFzG5bHL9VTJaFLEalx619IrR0uvku6mS4QzIEv5x9taS2MssUIlsggIBnNvIR1lMvFb8rBonDvyegqmMi0QuRkIRiH_ZZAd3BZm2ehU5b81aRZYJ-fidtkFfByYrBzP8S79-1eRAKJ9LvzWmo69JfFPRwx7PVGUdocMFpBUPYtiLxCB61f5yW-pgtbFZ4PXkq7_By9g97YxS3lg2wnsgkYJfeTHuNIF20oJuVt9loXz6vzUDP42AApSdrFw">
+    <div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest via-surface-container-lowest/30 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
+    <span class="absolute top-4 left-4 px-3.5 py-1 rounded-full bg-surface-container-lowest/80 backdrop-blur-md border border-white/10 font-label-sm text-label-sm text-primary tracking-wider uppercase">Government Summit</span>
+  </div>
+  <div class="p-6 flex flex-col justify-between">
+    <div class="font-label-sm text-label-sm text-outline uppercase tracking-wider mb-1">2023 • Sragen</div>
+    <h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold group-hover:text-primary transition-colors">Forum Dialog Publik Kominfo RI &amp; Kemenag</h3>
+    <p class="font-body-sm text-body-sm text-on-surface-variant mt-2 leading-relaxed">Penyelenggaraan dan produksi visual forum dialog publik kementerian dan pondok pesantren.</p>
+    <div class="mt-6 pt-4 border-t border-white/5 flex items-center justify-between">
+      <span class="font-label-sm text-label-sm text-outline">// GOV FORUM</span>
+      <a class="inline-flex items-center gap-1.5 font-label-sm text-label-sm text-primary group-hover:translate-x-1 transition-all" href="https://wa.me/628988385316?text=Halo%20Jago%20Organizer,%20saya%20ingin%20konsultasi%20event%20pemerintah/kementerian" target="_blank">
+        <span class="">Detail Acara</span>
+        <span class="material-symbols-outlined text-[16px]">north_east</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- Item 5: Azzahir 3D Stage Visual Design -->
+<div class="portfolio-item group relative break-inside-avoid rounded-3xl overflow-hidden bg-surface-container-low border border-white/10 hover:border-primary/50 transition-all duration-500 shadow-xl hover:-translate-y-1.5" data-category="corporate">
+  <div class="relative w-full aspect-[16/10] overflow-hidden">
+    <img alt="3D Stage Design Azzahir Bersholawat" class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105 group-hover:rotate-[0.5deg]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBnEDJyEYElmHAuPraEqGOvkwaKunFMor_seXB5lrXGp5Q05oBt5ZHPWi6ihmV5p_v-MpvGKkSmvy4knkJtpUktpRUDRvhlIvkkaFtgzP8CRB8YPf7qbrs39nXl4NaPA0hxSCaP7OZcFoc3qGD_xJQ42rLR3ye85FCbwweOeZRQalbMahM07lkv5FwRnwRm-K2rIg2ZRcndW809b57j8OQC6XRaeP0Ztwt1v1gUHHYPM1HnJukS0DqCepc8vni8VEbcmg">
+    <div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest via-surface-container-lowest/30 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
+    <span class="absolute top-4 left-4 px-3.5 py-1 rounded-full bg-surface-container-lowest/80 backdrop-blur-md border border-white/10 font-label-sm text-label-sm text-primary-fixed tracking-wider uppercase">Corporate Gathering</span>
+  </div>
+  <div class="p-6 flex flex-col justify-between">
+    <div class="font-label-sm text-label-sm text-outline uppercase tracking-wider mb-1">2024 • 3D Concept</div>
+    <h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold group-hover:text-primary transition-colors">3D Stage Design • Azzahir Bersholawat</h3>
+    <p class="font-body-sm text-body-sm text-on-surface-variant mt-2 leading-relaxed">Konsep visual 3D arsitektur panggung bernuansa islami modern dengan LED screen backdrop.</p>
+    <div class="mt-6 pt-4 border-t border-white/5 flex items-center justify-between">
+      <span class="font-label-sm text-label-sm text-outline">// ARCHITECTURAL 3D</span>
+      <a class="inline-flex items-center gap-1.5 font-label-sm text-label-sm text-primary group-hover:translate-x-1 transition-all" href="https://wa.me/628988385316?text=Halo%20Jago%20Organizer,%20saya%20tertarik%20dengan%20layanan%203D%20Stage%20Design" target="_blank">
+        <span class="">Detail Acara</span>
+        <span class="material-symbols-outlined text-[16px]">north_east</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- Item 6: Modern Band Stage 3D Mockup -->
+<div class="portfolio-item group relative break-inside-avoid rounded-3xl overflow-hidden bg-surface-container-low border border-white/10 hover:border-primary/50 transition-all duration-500 shadow-xl hover:-translate-y-1.5" data-category="corporate">
+  <div class="relative w-full aspect-[16/10] overflow-hidden">
+    <img alt="Modern Band Stage 3D Mockup" class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105 group-hover:rotate-[0.5deg]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDYGXpKZPdLjry19EP3abPvMl20FzITR-lEMudD_-Uq0ddz1IRKNJGS6x0-OH3qdE-eR_lK2SoaekJlZsnUMcCoGGz16eUTa-ofuxKLWEnduvxxln-Cw7b1pUe0-VV2iUdzRHk0w5-egV8tPJaKxY18z0OokEDCEWCMPdfmkPALbYDQku-d8Z0pB3WGtby1Z9DcIEnRw6LcUaedxtwK-cPOnOPjA47SjEBfhjW6UFbQvF8dQKbSvumcXHr-W8BIPTfpKA">
+    <div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest via-surface-container-lowest/30 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
+    <span class="absolute top-4 left-4 px-3.5 py-1 rounded-full bg-surface-container-lowest/80 backdrop-blur-md border border-white/10 font-label-sm text-label-sm text-primary-fixed tracking-wider uppercase">Corporate Gathering</span>
+  </div>
+  <div class="p-6 flex flex-col justify-between">
+    <div class="font-label-sm text-label-sm text-outline uppercase tracking-wider mb-1">2025 • Concept Stage</div>
+    <h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold group-hover:text-primary transition-colors">Modern Band Stage 3D Mockup</h3>
+    <p class="font-body-sm text-body-sm text-on-surface-variant mt-2 leading-relaxed">Perancangan panggung musik live dengan simulasi curved LED display, lighting truss, dan tata instrumen.</p>
+    <div class="mt-6 pt-4 border-t border-white/5 flex items-center justify-between">
+      <span class="font-label-sm text-label-sm text-outline">// LIVE STAGE 3D</span>
+      <a class="inline-flex items-center gap-1.5 font-label-sm text-label-sm text-primary group-hover:translate-x-1 transition-all" href="https://wa.me/628988385316?text=Halo%20Jago%20Organizer,%20saya%20ingin%20simulasi%20panggung%20band%203D" target="_blank">
+        <span class="">Detail Acara</span>
+        <span class="material-symbols-outlined text-[16px]">north_east</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- Item 7: Gala Dinner & Acoustic Stage 3D -->
+<div class="portfolio-item group relative break-inside-avoid rounded-3xl overflow-hidden bg-surface-container-low border border-white/10 hover:border-primary/50 transition-all duration-500 shadow-xl hover:-translate-y-1.5" data-category="corporate">
+  <div class="relative w-full aspect-[16/10] overflow-hidden">
+    <img alt="Gala Dinner &amp; Acoustic Stage 3D" class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105 group-hover:rotate-[0.5deg]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBpwoaoM3MVYds9j4ReOVNfzkym56EmVK0i3WSVpFw9f_NBmhF0VDHHr71S-XT14DHkXZbhO8dw1t8k8Zfc6MKClOYhzDJE1-LUWs5X7Q2hKwJLGYIJU1_FdZK2bPQ6WlA86na8Gxqio420eeZSyRPUoSqFKxIuiwNZCVZO4uMF_PwTuYR6397Idm_4hIrI1R_s0WUU1mMNq2Zyz8dm10R_y01tl0GV-Z0lH6BAbgKvJ1OB7KXTqA1GJIGCtyspAokUMA">
+    <div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest via-surface-container-lowest/30 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
+    <span class="absolute top-4 left-4 px-3.5 py-1 rounded-full bg-surface-container-lowest/80 backdrop-blur-md border border-white/10 font-label-sm text-label-sm text-primary-fixed tracking-wider uppercase">Corporate Gathering</span>
+  </div>
+  <div class="p-6 flex flex-col justify-between">
+    <div class="font-label-sm text-label-sm text-outline uppercase tracking-wider mb-1">2025 • Ballroom</div>
+    <h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold group-hover:text-primary transition-colors">Gala Dinner &amp; Acoustic Stage 3D</h3>
+    <p class="font-body-sm text-body-sm text-on-surface-variant mt-2 leading-relaxed">Konsep tata ruang gala dinner eksklusif lengkap dengan round table VIP dan backdrop panggung interaktif.</p>
+    <div class="mt-6 pt-4 border-t border-white/5 flex items-center justify-between">
+      <span class="font-label-sm text-label-sm text-outline">// VIP BANQUET 3D</span>
+      <a class="inline-flex items-center gap-1.5 font-label-sm text-label-sm text-primary group-hover:translate-x-1 transition-all" href="https://wa.me/628988385316?text=Halo%20Jago%20Organizer,%20saya%20ingin%20merancang%20gala%20dinner%20VIP" target="_blank">
+        <span class="">Detail Acara</span>
+        <span class="material-symbols-outlined text-[16px]">north_east</span>
+      </a>
+    </div>
+  </div>
+</div></div><div class="w-full p-6 rounded-3xl bg-surface-container/60 backdrop-blur-xl border border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 mt-4 shadow-lg"><div class="flex items-center gap-3.5"><div class="w-10 h-10 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center text-primary flex-shrink-0"><span class="material-symbols-outlined text-[22px]">cloud_sync</span></div><div><div class="font-label-md text-label-md text-on-surface font-semibold">Google Drive Production Sync</div><p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Semua dokumentasi di atas disinkronisasi langsung dari Google Drive resmi produksi Jago Organizer.</p></div></div><a class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-surface-container-high border border-white/10 hover:border-primary hover:bg-primary hover:text-on-primary text-on-surface font-label-md text-label-md transition-all shadow-md whitespace-nowrap group" href="https://wa.me/628988385316?text=Halo%20Jago%20Organizer,%20saya%20ingin%20melihat%20katalog%20lengkap%20portofolio%20Google%20Drive" target="_blank"><span class="">Akses Arsip Lengkap</span><span class="material-symbols-outlined text-[18px] transition-transform group-hover:translate-x-0.5">folder_open</span></a></div></div></section>
+<!-- COLLABORATION & CONTACT SECTION -->
+<section class="w-full py-24 px-margin-mobile md:px-margin relative" id="kontak">
+<div class="pointer-events-none absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-secondary-container/20 blur-[160px] rounded-full"></div>
+<div class="max-w-7xl mx-auto flex flex-col gap-12 relative z-10">
+<!-- Section Title -->
+<div class="max-w-3xl">
+<div class="flex items-center gap-2 mb-3">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<span class="font-label-sm text-label-sm text-primary tracking-widest uppercase">// MARI BERKOLABORASI</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface tracking-tight">
+          Siap Mewujudkan Acara Spektakuler Berikutnya?
+        </h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant mt-4 leading-relaxed">
+          Diskusikan konsep, kebutuhan teknis, dan timeline perhelatan Anda bersama tim produser dan arsitek panggung Jago Organizer.
+        </p>
+</div>
+<!-- Two-column Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+<!-- Left Column: Credentials & Direct Contact -->
+<div class="lg:col-span-5 flex flex-col gap-6">
+<div class="p-8 rounded-3xl bg-surface-container-low/70 backdrop-blur-xl shadow-xl flex flex-col gap-6">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-[28px]" style="font-variation-settings: &quot;FILL&quot; 1;">stars</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-bold">Jago Organizer</h3>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+              Pusat komando tata acara berstandar tinggi yang berpusat di Semarang dan melayani seluruh kota di Jawa Tengah serta nasional.
+            </p>
+<div class="flex flex-col gap-4 pt-2">
+<div class="flex items-start gap-3.5">
+<div class="w-10 h-10 rounded-xl bg-surface-container-high flex items-center justify-center text-primary flex-shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[20px]">location_on</span>
+</div>
+<div>
+<div class="font-label-sm text-label-sm text-outline uppercase tracking-wider">Alamat Kantor</div>
+<p class="font-body-sm text-body-sm text-on-surface mt-0.5 leading-relaxed">
+                    Jl Durian III RT 08 RW 02 Kelurahan Wates, Kecamatan Ngaliyan, Kota Semarang, Jawa Tengah
+                  </p>
+</div>
+</div>
+<div class="flex items-start gap-3.5">
+<div class="w-10 h-10 rounded-xl bg-surface-container-high flex items-center justify-center text-primary flex-shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[20px]">mail</span>
+</div>
+<div>
+<div class="font-label-sm text-label-sm text-outline uppercase tracking-wider">Surel Resmi</div>
+<a class="font-body-sm text-body-sm text-on-surface hover:text-primary transition-colors block mt-0.5" href="mailto:jagoorganizer2@gmail.com">
+                    jagoorganizer2@gmail.com
+                  </a>
+</div>
+</div>
+<div class="flex items-start gap-3.5">
+<div class="w-10 h-10 rounded-xl bg-surface-container-high flex items-center justify-center text-primary flex-shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[20px]">phone_in_talk</span>
+</div>
+<div>
+<div class="font-label-sm text-label-sm text-outline uppercase tracking-wider">Telepon / WhatsApp</div>
+<p class="font-body-sm text-body-sm text-on-surface mt-0.5 font-semibold">08988385316</p>
+</div>
+</div>
+</div>
+<!-- Direct WA Action -->
+<a class="w-full inline-flex items-center justify-center gap-3 px-6 py-4 rounded-2xl bg-secondary-container hover:bg-primary-container text-on-surface hover:text-on-primary-container font-label-md text-label-md font-semibold transition-all shadow-md group" href="https://wa.me/628988385316" rel="noopener noreferrer" target="_blank">
+<span class="material-symbols-outlined text-[22px]" style="font-variation-settings: &quot;FILL&quot; 1;">chat</span>
+<span class="">Hubungi via WhatsApp (08988385316)</span>
+</a>
+<!-- Social Media Badges -->
+
+</div>
+</div>
+<!-- Right Column: Interactive Quick Inquiry Form -->
+<div class="lg:col-span-7">
+<div class="p-8 md:p-10 rounded-3xl bg-surface-container-low/70 backdrop-blur-xl shadow-2xl relative overflow-hidden">
+<div class="mb-8">
+<h3 class="font-headline-md text-headline-md text-on-surface font-bold tracking-tight">Formulir Konsultasi Acara</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">
+                Lengkapi rincian berikut agar tim kami dapat merumuskan estimasi konsep dan anggaran awal.
+              </p>
+</div>
+<form class="flex flex-col gap-6" id="inquiry-form" onsubmit="event.preventDefault(); handleFormSubmit();">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Field: Nama Lengkap / Instansi -->
+<div class="flex flex-col gap-2">
+<label class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider" for="fullName">
+                    Nama Lengkap / Instansi <span class="text-primary">*</span>
+</label>
+<input class="w-full px-4 py-3 rounded-xl bg-surface-container-lowest/80 text-on-surface placeholder:text-outline font-body-sm text-body-sm focus:outline-none focus:ring-2 focus:ring-primary transition-all" id="fullName" placeholder="Contoh: Budi Santoso / PT Karya Prima" required="" type="text">
+</div>
+<!-- Field: WhatsApp / Email -->
+<div class="flex flex-col gap-2">
+<label class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider" for="contactInfo">
+                    No. WhatsApp / Email <span class="text-primary">*</span>
+</label>
+<input class="w-full px-4 py-3 rounded-xl bg-surface-container-lowest/80 text-on-surface placeholder:text-outline font-body-sm text-body-sm focus:outline-none focus:ring-2 focus:ring-primary transition-all" id="contactInfo" placeholder="Contoh: 08123456789 atau email@instansi.com" required="" type="text">
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Field: Jenis Event -->
+<div class="flex flex-col gap-2">
+<label class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider" for="eventType">
+                    Jenis Event <span class="text-primary">*</span>
+</label>
+<select class="w-full px-4 py-3 rounded-xl bg-surface-container-lowest/80 text-on-surface font-body-sm text-body-sm focus:outline-none focus:ring-2 focus:ring-primary transition-all appearance-none cursor-pointer" id="eventType" required="">
+<option class="text-outline" disabled="" selected="" value="">Pilih Kategori Event</option>
+<option class="bg-surface-container" value="Corporate Gathering / Gala Dinner">Corporate Gathering / Gala Dinner</option>
+<option class="bg-surface-container" value="Konser Musik &amp; Festival">Konser Musik &amp; Festival</option>
+<option class="bg-surface-container" value="Government Summit &amp; Konferensi">Government Summit &amp; Konferensi</option>
+<option class="bg-surface-container" value="Exhibition &amp; Pameran Industri">Exhibition &amp; Pameran Industri</option>
+<option class="bg-surface-container" value="Wedding / Private VIP Event">Wedding / Private VIP Event</option>
+<option class="bg-surface-container" value="Lainnya">Lainnya</option>
+</select>
+</div>
+<!-- Field: Perkiraan Tanggal & Lokasi -->
+<div class="flex flex-col gap-2">
+<label class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider" for="eventDateLocation">
+                    Perkiraan Tanggal &amp; Lokasi
+                  </label>
+<input class="w-full px-4 py-3 rounded-xl bg-surface-container-lowest/80 text-on-surface placeholder:text-outline font-body-sm text-body-sm focus:outline-none focus:ring-2 focus:ring-primary transition-all" id="eventDateLocation" placeholder="Contoh: November 2025, Semarang" type="text">
+</div>
+</div>
+<!-- Field: Pesan / Kebutuhan Acara -->
+<div class="flex flex-col gap-2">
+<label class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider" for="eventNotes">
+                  Pesan &amp; Kebutuhan Spesifik
+                </label>
+<textarea class="w-full px-4 py-3 rounded-xl bg-surface-container-lowest/80 text-on-surface placeholder:text-outline font-body-sm text-body-sm focus:outline-none focus:ring-2 focus:ring-primary transition-all resize-none" id="eventNotes" placeholder="Jelaskan kebutuhan Anda (man power, videotron, sound system, artis, dll)..." rows="4"></textarea>
+</div>
+<!-- Submit Button -->
+<button class="w-full py-4 px-6 rounded-2xl bg-primary text-on-primary font-label-md text-label-md font-semibold tracking-wide flex items-center justify-center gap-3 transition-all duration-300 shadow-xl shadow-primary/30 hover:shadow-primary/50 hover:scale-[1.01] group cursor-pointer" id="submit-btn" type="submit">
+<span class="">Kirim Konsultasi Event</span>
+<span class="material-symbols-outlined text-[20px] transition-transform group-hover:translate-x-1">send</span>
+</button>
+<div class="hidden p-4 rounded-xl bg-secondary-container/40 text-on-secondary-container font-body-sm text-body-sm text-center" id="form-feedback">
+                Terima kasih! Pesan konsultasi Anda telah siap dikirimkan langsung ke WhatsApp kami.
+              </div>
+</form>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Interactive JavaScript logic for Filtering and Direct WhatsApp Form Action -->
+<script>
+    // Portfolio Filter Micro-interaction
+    const filterTabs = document.querySelectorAll('.portfolio-tab');
+    const portfolioItems = document.querySelectorAll('.portfolio-item');
+
+    filterTabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        // Reset classes for all tabs
+        filterTabs.forEach(t => {
+          t.classList.remove('bg-primary', 'text-on-primary', 'shadow-md');
+          t.classList.add('text-on-surface-variant');
+        });
+        // Set active for clicked tab
+        tab.classList.add('bg-primary', 'text-on-primary', 'shadow-md');
+        tab.classList.remove('text-on-surface-variant');
+
+        const filterValue = tab.getAttribute('data-filter');
+
+        portfolioItems.forEach(item => {
+          if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
+            item.style.display = 'flex';
+            setTimeout(() => {
+              item.style.opacity = '1';
+              item.style.transform = 'scale(1)';
+            }, 10);
+          } else {
+            item.style.opacity = '0';
+            item.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+              item.style.display = 'none';
+            }, 250);
+          }
+        });
+      });
+    });
+
+    // Form submission forwarder to WhatsApp
+    function handleFormSubmit() {
+      const name = document.getElementById('fullName').value.trim();
+      const contact = document.getElementById('contactInfo').value.trim();
+      const eventType = document.getElementById('eventType').value;
+      const dateLocation = document.getElementById('eventDateLocation').value.trim();
+      const notes = document.getElementById('eventNotes').value.trim();
+
+      const message = `Halo Jago Organizer, saya ingin mengajukan konsultasi event:%0A%0A` +
+        `• *Nama / Instansi:* ${encodeURIComponent(name)}%0A` +
+        `• *Kontak:* ${encodeURIComponent(contact)}%0A` +
+        `• *Kategori Event:* ${encodeURIComponent(eventType)}%0A` +
+        `• *Tanggal & Lokasi:* ${encodeURIComponent(dateLocation || '-')}%0A` +
+        `• *Kebutuhan:* ${encodeURIComponent(notes || '-')}%0A%0A` +
+        `Mohon informasi tindak lanjut dan estimasi anggarannya. Terima kasih!`;
+
+      const feedback = document.getElementById('form-feedback');
+      feedback.classList.remove('hidden');
+
+      setTimeout(() => {
+        window.open(`https://wa.me/6285866342226?text=${message}`, '_blank');
+      }, 500);
+    }
+  </script>
+</div></main><footer class="w-full relative z-10 border-t border-white/10 bg-[#0e0e12]/80 backdrop-blur-2xl mt-space-xl"><div class="max-w-7xl mx-auto px-margin-mobile md:px-margin py-16"><div class="grid grid-cols-1 md:grid-cols-12 gap-10"><div class="md:col-span-5 flex flex-col gap-4"><div class="flex items-center gap-3"><img alt="Jago Organizer Logo" class="h-7 w-auto object-contain filter invert brightness-95" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBDTMfLR3drvtD27ZE8PbF4lktGmGO2x9SuDYH68NhQLaR04NvGB7sFsZgs6FMSQCu9KmG9GGUusdpsHwscDEkccbnS9UrmRQA5PGz_qBqTMVoLm-L-P6ynJGaVgK2LPYhiOrMHqHtNJYfkn6_FIm8ucT4IdrlG17_lLKKTNdDxtGUqUnLBxxrVtOZh-xfldJlwxm194KZo2ipuhGsMY2XAWnIqjhrGIdo2faVYujxxJ-K39g9ZSBXFncuMrIIcs-MqRw"><span class="font-headline-sm text-headline-sm text-on-surface tracking-tight uppercase">Jago Organizer</span></div><p class="font-body-sm text-body-sm text-on-surface-variant max-w-sm">Kurasi arsitektur perhelatan premium, konser mega-skala, pameran internasional, dan konferensi korporat terintegrasi dengan standar eksekusi tanpa cela.</p></div><div class="md:col-span-3 flex flex-col gap-3"><span class="font-label-sm text-label-sm text-primary uppercase tracking-widest">// 01. NAVIGASI</span><nav class="flex flex-col gap-2"><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-colors" href="#layanan">Layanan Unggulan</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-colors" href="#portofolio">Portofolio Spektakuler</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-colors" href="#klien">Daftar Mitra &amp; Klien</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-colors" href="#kontak">Konsultasi Acara</a></nav></div><div class="md:col-span-4 flex flex-col gap-3"><span class="font-label-sm text-label-sm text-primary uppercase tracking-widest">// 02. KANTOR UTAMA</span><p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed"><span style="color: rgb(228, 225, 231); letter-spacing: 0.13px; background-color: rgba(27, 27, 31, 0.7);">Jl Durian III RT 08 RW 02 Kelurahan Wates, Kecamatan Ngaliyan, Kota Semarang, Jawa Tengah<br></span><a class="font-body-sm text-body-sm text-on-surface hover:text-primary transition-colors block mt-0.5 cursor-text" href="mailto:jagoorganizer2@gmail.com" spellcheck="false" data-stitch-added-classes="cursor-text" style="--tw-border-spacing-y: 0; --tw-translate-x: 0; --tw-translate-y: 0; --tw-rotate: 0; --tw-skew-x: 0; --tw-skew-y: 0; --tw-scale-x: 1; --tw-scale-y: 1; --tw-pan-x: ; --tw-pan-y: ; --tw-pinch-zoom: ; --tw-scroll-snap-strictness: proximity; --tw-gradient-from-position: ; --tw-gradient-via-position: ; --tw-gradient-to-position: ; --tw-ordinal: ; --tw-slashed-zero: ; --tw-numeric-figure: ; --tw-numeric-spacing: ; --tw-numeric-fraction: ; --tw-ring-inset: ; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgb(59 130 246 / 0.5); --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; --tw-shadow-colored: 0 0 #0000; --tw-blur: ; --tw-brightness: ; --tw-contrast: ; --tw-grayscale: ; --tw-hue-rotate: ; --tw-invert: ; --tw-saturate: ; --tw-sepia: ; --tw-drop-shadow: ; --tw-backdrop-blur: ; --tw-backdrop-brightness: ; --tw-backdrop-contrast: ; --tw-backdrop-grayscale: ; --tw-backdrop-hue-rotate: ; --tw-backdrop-invert: ; --tw-backdrop-opacity: ; --tw-backdrop-saturate: ; --tw-backdrop-sepia: ; --tw-contain-size: ; --tw-contain-layout: ; --tw-contain-paint: ; --tw-contain-style: ; color: rgb(208, 188, 255); --tw-text-opacity: 1; background-color: rgba(27, 27, 31, 0.7); outline: none !important; box-shadow: none !important;">jagoorganizer2@gmail.com</a></p><div class="flex items-center gap-3 mt-2"><a class="w-9 h-9 rounded-full bg-surface-container-high border border-white/10 flex items-center justify-center text-on-surface-variant hover:text-primary hover:border-primary transition-all" href="#"><span class="material-symbols-outlined text-[18px]">alternate_email</span></a><a class="w-9 h-9 rounded-full bg-surface-container-high border border-white/10 flex items-center justify-center text-on-surface-variant hover:text-primary hover:border-primary transition-all" href="#"><span class="material-symbols-outlined text-[18px]">call</span></a><a class="w-9 h-9 rounded-full bg-surface-container-high border border-white/10 flex items-center justify-center text-on-surface-variant hover:text-primary hover:border-primary transition-all" href="#"><span class="material-symbols-outlined text-[18px]">share</span></a></div></div></div><div class="mt-12 pt-8 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4"><p class="font-body-sm text-body-sm text-outline">© 2025 Jago Organizer. Seluruh hak cipta dilindungi undang-undang.</p><div class="flex items-center gap-6"><a class="font-label-sm text-label-sm text-outline hover:text-on-surface transition-colors uppercase" href="#">Kebijakan Privasi</a><a class="font-label-sm text-label-sm text-outline hover:text-on-surface transition-colors uppercase" href="#">Syarat &amp; Ketentuan</a></div></div></div></footer>
+
+
+
+
+
+
+
+
+
+</body></html>
